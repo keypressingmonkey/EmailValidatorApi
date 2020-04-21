@@ -8,8 +8,7 @@ app = Flask(__name__)
 def hello_world():
     ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
     if request.method == 'GET':
-        if ip:
-            if 1==1: #ip in whitelistedIpAddresses:
+        if ip in whitelistedIpAddresses:
                 email = request.args.get('email')
                 if email is None:
                     return "No email address passed with call"
