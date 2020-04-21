@@ -1,24 +1,30 @@
 # list of whitelisted IPs from RapidApi here: https://docs.rapidapi.com/docs/firewall-ip-security
 # helpers.py
-from flask import request, current_app, Blueprint
-
+from flask import Flask,request
 
 # routes.py
-index = Blueprint('index ', __name__)
-@index.route('/', methods=['POST'])
+app = Flask(__name__)
+@app.route('/istempemail/', methods=['get'])
 def hello_world():
     ip = request.environ.get('HTTP_X_REAL_IP', request.remote_addr)
-    if ip:
-        if 1==1: #ip in whitelistedIpAddresses:
-            email = request.form.get('email')
-            if email is None:
-                return "No email address passed with call"
-            else:
-                domain = email.split("@")[-1]
-                return "Congratulations, you received an API response: "+ domain
-    else:
-        return 'invalid authentification IP address'
+    if request.method == 'GET':
+        if ip:
+            if 1==1: #ip in whitelistedIpAddresses:
+                email = request.args.get('email')
+                if email is None:
+                    return "No email address passed with call"
+                else:
+                    domain = email.split("@")[-1]
+                    if domain in tempmaillist:
+                        return "true"
+                    return "false"
+        else:
+            return 'invalid authentification IP address'
+    return 'only GET allowed'
 
+tempmaillist = [
+    'byom.de'
+]
 
 whitelistedIpAddresses = [
     '107.23.255.128',
