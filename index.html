@@ -1,0 +1,151 @@
+<!--
+ API Documentation HTML Template  - 1.0.0
+ Copyright © 2016 Florian Nicolas
+ Licensed under the MIT license.
+ https://github.com/ticlekiwi/API-Documentation-HTML-Template
+ !-->
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>API - Documentation</title>
+    <meta name="description" content="">
+    <meta name="author" content="ticlekiwi">
+
+    <meta http-equiv="cleartype" content="on">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/hightlightjs-dark.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,500|Source+Code+Pro:300" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css" media="all">
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+</head>
+
+<body>
+    <div class="left-menu">
+        <div class="content-logo">
+            <img alt="Temp Email Checker" title="Temp Email Checker" src="images/logo.png" height="32" />
+            <span>API Documentation</span>
+        </div>
+        <div class="content-menu">
+            <ul>
+                <li class="scroll-to-link active" data-target="get-started">
+                    <a>GET STARTED</a>
+                </li>
+                <li class="scroll-to-link" data-target="get-characters">
+                    <a>Get Characters</a>
+                </li>
+                <li class="scroll-to-link" data-target="errors">
+                    <a>Errors</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="content-page">
+        <div class="content-code"></div>
+        <div class="content">
+            <div class="overflow-hidden content-section" id="content-get-started">
+                <h1 id="get-started">Get started</h1>
+                <pre>
+    API Endpoint
+
+    http://keypressingmonkey.pythonanywhere.com/istempemail/
+                </pre>
+                <p>
+                    This Temporary Email Checker API tells you whether the domain ending is part of a list of known spam / temporary email providers. This can help you prevent fake signups to various services.
+                </p>
+                <p>
+                    To use this API, you need an <strong>API key</strong> from RapidApi, you can get one through this link:
+                </p>
+            </div>
+            <div class="overflow-hidden content-section" id="content-get-characters">
+                <h2 id="get-characters">get characters</h2>
+                <pre><code class="bash">
+http://keypressingmonkey.pythonanywhere.com/
+istempemail/?email=YOUREMAIL
+                </code></pre>
+                <p>
+                    To get a return you need to make a GET call to the following url :<br>
+                    <code class="higlighted">http://keypressingmonkey.pythonanywhere.com/
+                        istempemail/?email=YOUREMAIL</code>. Take note: While the code automatically strips off anything before the @-sign it is still recommended that you strip off the actual email address that comes before that.
+                    This is in your own interest, but not required.
+                </p>
+                <br>
+                <pre><code class="json">
+Result example :
+#http://keypressingmonkey.pythonanywhere.com/
+istempemail/?email=dfssd@byom.de
+true
+
+#http://keypressingmonkey.pythonanywhere.com/
+istempemail/?email=dfssd@web.de
+false
+                </code></pre>
+                <h4>QUERY PARAMETERS</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>email</td>
+                            <td>String</td>
+                            <td>E-Mail address you want to check.</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="overflow-hidden content-section" id="content-errors">
+                <h2 id="errors">Errors</h2>
+                <p>
+                    The SPI uses the following, self-explanatory error codes:
+                </p>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Error Code</th>
+                            <th>solution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>No email address passed with call</td>
+                            <td>
+                                Your GET-call is wrong somehow. Correct would be: http://keypressingmonkey.pythonanywhere.com/istempemail/?email=YOUREMAIL
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>invalid authentification IP address</td>
+                            <td>
+                                Only IP addresses whitelisted through RapidAPI are allowed. Sign up to the API at rapidApi.com and they will supply you with everything you need to sign up.
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>only GET allowed</td>
+                            <td>
+                                Since this API does not need any POST, UPDATE or DELETE requests I have disabled those. If you get this error your call is wrong, make sure you use get.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="content-code"></div>
+    </div>
+
+    <!-- END Github Corner Ribbon - to remove -->
+    <script src="js/libs/jquery.js"></script>
+    <script src="js/script.js"></script>
+</body>
+
+</html>
